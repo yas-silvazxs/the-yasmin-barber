@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>The Yasmin Barber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="stage">
+
+  <!-- Brand panel -->
+  <div class="brand">
+    <div class="mark">
+      <svg viewBox="0 0 48 48" fill="none">
+        <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
+        <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
+        <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
+      </svg>
+      <div class="mark-text">
+        <span class="kicker">BARBEARIA</span>
+        <span class="name">The Yasmin Barber</span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Corte com <em>precisão</em>,<br>navalha com <em>respeito</em>.</h1>
+      <p>Sua cadeira, sua vez. Entre na sua conta para marcar horário, acompanhar seu histórico de cortes e falar direto com o barbeiro.</p>
+    </div>
+
+    <div class="hours">
+      <span>Ter — Sex</span><span>09h às 20h</span>
+      <span>Sábado</span><span>08h às 18h</span>
+      <span>Domingo e Segunda</span><span>Fechado</span>
+    </div>
+  </div>
+
+  <!-- Form panel -->
+  <div class="panel">
+    <div class="tabs">
+      <button class="tab active" id="tabLogin" type="button">Entrar</button>
+      <button class="tab" id="tabCadastro" type="button">Criar conta</button>
+    </div>
+
+    <!-- LOGIN -->
+    <form id="formLogin" autocomplete="on">
+      <h2 class="form-title">Bem-vindo de volta</h2>
+      <p class="form-sub">Entre com seu e-mail e senha para acessar sua conta.</p>
+
+      <div class="field">
+        <label for="loginEmail">E-mail</label>
+        <input type="email" id="loginEmail" placeholder="voce@email.com" required autocomplete="email">
+        <div class="field-error" id="loginEmailError"></div>
+      </div>
+
+      <div class="field">
+        <label for="loginSenha">Senha</label>
+        <input type="password" id="loginSenha" placeholder="Sua senha" required autocomplete="current-password">
+        <div class="field-error" id="loginSenhaError"></div>
+      </div>
+
+      <button class="submit" type="submit">Entrar</button>
+      <div class="status" id="loginStatus"></div>
+    </form>
+
+    <!-- CADASTRO -->
+    <form id="formCadastro" class="hidden" autocomplete="on">
+      <h2 class="form-title">Criar sua conta</h2>
+      <p class="form-sub">Preencha seus dados para marcar seu próximo horário em segundos.</p>
+
+      <div class="field">
+        <label for="cadNome">Nome completo</label>
+        <input type="text" id="cadNome" placeholder="Seu nome" required autocomplete="name">
+        <div class="field-error" id="cadNomeError"></div>
+      </div>
+
+      <div class="field">
+        <label for="cadEmail">E-mail</label>
+        <input type="email" id="cadEmail" placeholder="voce@email.com" required autocomplete="email">
+        <div class="field-error" id="cadEmailError"></div>
+      </div>
+
+      <div class="field">
+        <label for="cadTelefone">Telefone</label>
+        <input type="tel" id="cadTelefone" placeholder="(41) 90000-0000" required autocomplete="tel">
+        <div class="field-error" id="cadTelefoneError"></div>
+      </div>
+
+      <div class="field">
+        <label for="cadSenha">Senha</label>
+        <input type="password" id="cadSenha" placeholder="Crie uma senha" required autocomplete="new-password">
+        <div class="field-error" id="cadSenhaError"></div>
+      </div>
+
+      <button class="submit" type="submit">Criar conta</button>
+      <div class="status" id="cadStatus"></div>
+    </form>
+
+    <div class="switch-line" id="switchLine">
+      Ainda não tem conta?
+      <button class="link-btn" id="goCadastro" type="button">Cadastre-se</button>
+    </div>
+  </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
