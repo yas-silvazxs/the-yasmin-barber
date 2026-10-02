@@ -3,19 +3,57 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>The Yasmin Barber</title>
+<title>Entrar · The Yasmin Barber</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
 </head>
 <body>
+
+<header class="site-header">
+  <a class="brand-mini" href="index.html" aria-label="The Yasmin Barber — início">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
+      <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
+      <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
+    </svg>
+    <span class="name">The Yasmin Barber</span>
+  </a>
+
+  <nav>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html" class="active">Entrar</a></li>
+      <li><a href="cortes.html">Cortes</a></li>
+      <li><a href="precos.html">Preços</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <button class="theme-btn" type="button" aria-label="Alternar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 0 0 11.3 11.3z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    </button>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
 <div class="stage">
 
   <!-- Brand panel -->
   <div class="brand">
     <div class="mark">
-      <svg viewBox="0 0 48 48" fill="none">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
         <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
         <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
         <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
@@ -40,6 +78,18 @@
 
   <!-- Form panel -->
   <div class="panel">
+    <div class="panel-theme">
+      <button class="theme-btn" type="button" aria-label="Alternar tema">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 0 0 11.3 11.3z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+    </div>
+
     <div class="tabs">
       <button class="tab active" id="tabLogin" type="button">Entrar</button>
       <button class="tab" id="tabCadastro" type="button">Criar conta</button>
@@ -106,6 +156,10 @@
   </div>
 
 </div>
+
+<footer class="site-footer">
+  <p>The Yasmin Barber · <a href="precos.html">Ver tabela de preços</a> · <a href="cortes.html">Galeria de cortes</a></p>
+</footer>
 
 <script src="script.js"></script>
 </body>

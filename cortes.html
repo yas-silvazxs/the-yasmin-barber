@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Cortes · The Yasmin Barber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand-mini" href="index.html" aria-label="The Yasmin Barber — início">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
+      <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
+      <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
+    </svg>
+    <span class="name">The Yasmin Barber</span>
+  </a>
+
+  <nav>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Entrar</a></li>
+      <li><a href="cortes.html" class="active">Cortes</a></li>
+      <li><a href="precos.html">Preços</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <button class="theme-btn" type="button" aria-label="Alternar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 0 0 11.3 11.3z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    </button>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="page-hero">
+    <span class="eyebrow">Galeria</span>
+    <h1>Cortes que definem o estilo</h1>
+    <p>Escolha o visual que combina com você. Cada card está pronto para receber a foto do corte — basta substituir o espaço reservado quando tiver as imagens.</p>
+  </div>
+
+  <div class="filters" role="group" aria-label="Filtrar por categoria">
+    <button class="filter-btn active" type="button" data-filter="all">Todos</button>
+    <button class="filter-btn" type="button" data-filter="classico">Clássicos</button>
+    <button class="filter-btn" type="button" data-filter="moderno">Modernos</button>
+    <button class="filter-btn" type="button" data-filter="barba">Barba</button>
+    <button class="filter-btn" type="button" data-filter="combo">Combos</button>
+  </div>
+
+  <div class="cuts-grid" id="cutsGrid">
+
+    <!-- Card 1 -->
+    <article class="cut-card" data-cat="classico">
+      <div class="media">
+        <span class="badge">Clássico</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Social tradicional</h3>
+        <p>Corte clássico com tesoura e máquina, acabamento na navalha. Ideal para quem busca elegância no dia a dia.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~40 min
+          </span>
+          <span class="price">R$ 55</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 2 -->
+    <article class="cut-card" data-cat="moderno">
+      <div class="media">
+        <span class="badge">Moderno</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Fade baixo</h3>
+        <p>Degradê baixo com transição suave. Versátil e limpo, combina com qualquer estilo de roupa.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~45 min
+          </span>
+          <span class="price">R$ 65</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 3 -->
+    <article class="cut-card" data-cat="moderno">
+      <div class="media">
+        <span class="badge">Moderno</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Fade médio / high</h3>
+        <p>Degradê médio ou alto com textura no topo. Visual contemporâneo e definido.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~50 min
+          </span>
+          <span class="price">R$ 70</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 4 -->
+    <article class="cut-card" data-cat="classico">
+      <div class="media">
+        <span class="badge">Clássico</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Militar / Crew cut</h3>
+        <p>Corte curto e prático, acabamento preciso. Baixa manutenção e visual limpo.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~30 min
+          </span>
+          <span class="price">R$ 45</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 5 -->
+    <article class="cut-card" data-cat="moderno">
+      <div class="media">
+        <span class="badge">Moderno</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Texturizado / Crop</h3>
+        <p>Volume e textura no topo, laterais alinhadas. Perfeito para cabelos médios e finos.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~45 min
+          </span>
+          <span class="price">R$ 65</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 6 -->
+    <article class="cut-card" data-cat="barba">
+      <div class="media">
+        <span class="badge">Barba</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Barba desenhada</h3>
+        <p>Contorno na navalha, alinhamento e finalização com produto. Barba definida e cuidada.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~25 min
+          </span>
+          <span class="price">R$ 40</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 7 -->
+    <article class="cut-card" data-cat="barba">
+      <div class="media">
+        <span class="badge">Barba</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Barba completa + toalha quente</h3>
+        <p>Ritual completo: vapor, óleo, toalha quente e navalha. Experiência premium de barbearia.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~40 min
+          </span>
+          <span class="price">R$ 60</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 8 -->
+    <article class="cut-card" data-cat="combo">
+      <div class="media">
+        <span class="badge">Combo</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Corte + Barba</h3>
+        <p>O combo mais pedido: corte completo e barba desenhada no mesmo atendimento.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~70 min
+          </span>
+          <span class="price">R$ 90</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 9 -->
+    <article class="cut-card" data-cat="combo">
+      <div class="media">
+        <span class="badge">Combo</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Experiência completa</h3>
+        <p>Corte + barba com toalha quente + sobrancelha. O pacote premium da casa.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~90 min
+          </span>
+          <span class="price">R$ 120</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 10 -->
+    <article class="cut-card" data-cat="classico">
+      <div class="media">
+        <span class="badge">Clássico</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Corte infantil</h3>
+        <p>Atendimento cuidadoso para os pequenos. Ambiente calmo e resultado caprichado.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~30 min
+          </span>
+          <span class="price">R$ 40</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 11 -->
+    <article class="cut-card" data-cat="moderno">
+      <div class="media">
+        <span class="badge">Moderno</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Pompadour / Quiff</h3>
+        <p>Volume frontal marcado, laterais curtas. Estilo atemporal com toque contemporâneo.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~50 min
+          </span>
+          <span class="price">R$ 70</span>
+        </div>
+      </div>
+    </article>
+
+    <!-- Card 12 -->
+    <article class="cut-card" data-cat="barba">
+      <div class="media">
+        <span class="badge">Barba</span>
+        <div class="placeholder">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <circle cx="8.5" cy="8.5" r="1.5"/>
+            <path d="M21 15l-5-5L5 21"/>
+          </svg>
+          <span>Espaço para foto</span>
+        </div>
+      </div>
+      <div class="body">
+        <h3>Sobrancelha masculina</h3>
+        <p>Alinhamento e limpeza das sobrancelhas com precisão. Finalização discreta e natural.</p>
+        <div class="meta">
+          <span class="time">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+            ~15 min
+          </span>
+          <span class="price">R$ 25</span>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>The Yasmin Barber · <a href="precos.html">Ver tabela de preços</a> · <a href="index.html">Entrar / Criar conta</a></p>
+</footer>
+
+<script>
+(function () {
+  const buttons = document.querySelectorAll('.filter-btn');
+  const cards = document.querySelectorAll('.cut-card');
+
+  buttons.forEach(btn => {
+    btn.addEventListener('click', function () {
+      buttons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      cards.forEach(card => {
+        const cat = card.getAttribute('data-cat');
+        if (filter === 'all' || cat === filter) {
+          card.style.display = '';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+})();
+</script>
+</body>
+</html>
