@@ -160,7 +160,48 @@
 <footer class="site-footer">
   <p>The Yasmin Barber · <a href="precos.html">Ver tabela de preços</a> · <a href="cortes.html">Galeria de cortes</a></p>
 </footer>
+<script>
+  function pegarDados(){
+      dados = {
+          nome: document.getElementById("nome").value,
+          celular: document.getElementById("celular").value,
+          email: document.getElementById("email").value,
+          senha: document.getElementById("senha").value
+      }
+      return dados
+  }
 
+  const form_cadastro = document.getElementById("form_cadastro")
+  const btn_enviar = document.getElementById("btn_enviar")
+
+  form_cadastro.addEventListener("submit", async (event)=>{
+      event.preventDefault()
+      btn_enviar.disabled = true
+      btn_enviar.value = "Enviando cadastro..."
+
+      const dados = pegarDados()
+
+      try {
+          const resposta = await fetch("http://localhost:3000/cliente", {
+              method: "POST",
+              headers: { "Content-Type": "application/json" },
+              body: JSON.stringify(dados)
+          })
+
+          if (!resposta.ok) {
+              throw new Error("Erro na API")
+          }
+
+          mostrarToast("✅ Cadastro enviado com sucesso!", "bg-success");
+          form_cadastro.reset()
+      } catch(error) {
+          mostrarToast("❌ Falha ao enviar. " + error, "bg-danger");
+      } finally {
+          btn_enviar.value = "Enviar Cadastro"
+          btn_enviar.disabled = false
+      }
+  })
+</script>
 <script src="script.js"></script>
 </body>
 </html>
