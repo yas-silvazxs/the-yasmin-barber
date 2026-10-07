@@ -23,10 +23,10 @@
   </a>
 
   <nav>
-    <ul class="nav-links" role="list">
-      <li><a href="index.html">Entrar</a></li>
+    <ul class="nav-links" role="list" id="mainNav">
       <li><a href="cortes.html" class="active">Cortes</a></li>
       <li><a href="precos.html">Preços</a></li>
+      <li><a href="#" id="btnSair">Sair</a></li>
     </ul>
   </nav>
 
@@ -381,7 +381,7 @@
 </main>
 
 <footer class="site-footer">
-  <p>The Yasmin Barber · <a href="precos.html">Ver tabela de preços</a> · <a href="index.html">Entrar / Criar conta</a></p>
+  <p>The Yasmin Barber · <a href="precos.html">Ver tabela de preços</a></p>
 </footer>
 
 <script>
@@ -406,5 +406,26 @@
   });
 })();
 </script>
+
+<script src="auth.js"></script>
+<script>
+(function () {
+  if (!Auth.requireAuth()) return;
+  var user = Auth.getUser();
+  var btn = document.getElementById('btnSair');
+  if (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      Auth.logout();
+      window.location.href = 'index.html';
+    });
+  }
+  var foot = document.querySelector('.site-footer p');
+  if (foot && user && user.nome) {
+    foot.insertAdjacentHTML('beforeend', ' · Olá, <strong>' + user.nome.split(' ')[0] + '</strong>');
+  }
+})();
+</script>
+
 </body>
 </html>
