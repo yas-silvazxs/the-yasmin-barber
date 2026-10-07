@@ -25,8 +25,7 @@
   <nav>
     <ul class="nav-links" role="list">
       <li><a href="index.html" class="active">Entrar</a></li>
-      <li><a href="cortes.html">Cortes</a></li>
-      <li><a href="precos.html">Preços</a></li>
+      <li><a href="cadastro.html">Criar conta</a></li>
     </ul>
   </nav>
 
@@ -50,7 +49,6 @@
 
 <div class="stage">
 
-  <!-- Brand panel -->
   <div class="brand">
     <div class="mark">
       <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
@@ -76,7 +74,6 @@
     </div>
   </div>
 
-  <!-- Form panel -->
   <div class="panel">
     <div class="panel-theme">
       <button class="theme-btn" type="button" aria-label="Alternar tema">
@@ -90,118 +87,114 @@
       </button>
     </div>
 
-    <div class="tabs">
-      <button class="tab active" id="tabLogin" type="button">Entrar</button>
-      <button class="tab" id="tabCadastro" type="button">Criar conta</button>
-    </div>
-
-    <!-- LOGIN -->
     <form id="formLogin" autocomplete="on">
       <h2 class="form-title">Bem-vindo de volta</h2>
       <p class="form-sub">Entre com seu e-mail e senha para acessar sua conta.</p>
 
       <div class="field">
         <label for="loginEmail">E-mail</label>
-        <input type="email" id="loginEmail" placeholder="voce@email.com" required autocomplete="email">
+        <input type="email" id="loginEmail" name="email" placeholder="voce@email.com" required autocomplete="email">
         <div class="field-error" id="loginEmailError"></div>
       </div>
 
       <div class="field">
         <label for="loginSenha">Senha</label>
-        <input type="password" id="loginSenha" placeholder="Sua senha" required autocomplete="current-password">
+        <input type="password" id="loginSenha" name="senha" placeholder="Sua senha" required autocomplete="current-password">
         <div class="field-error" id="loginSenhaError"></div>
       </div>
 
-      <button class="submit" type="submit">Entrar</button>
+      <button class="submit" type="submit" id="btnLogin">Entrar</button>
       <div class="status" id="loginStatus"></div>
     </form>
 
-    <!-- CADASTRO -->
-    <form id="formCadastro" class="hidden" autocomplete="on">
-      <h2 class="form-title">Criar sua conta</h2>
-      <p class="form-sub">Preencha seus dados para marcar seu próximo horário em segundos.</p>
-
-      <div class="field">
-        <label for="cadNome">Nome completo</label>
-        <input type="text" id="cadNome" placeholder="Seu nome" required autocomplete="name">
-        <div class="field-error" id="cadNomeError"></div>
-      </div>
-
-      <div class="field">
-        <label for="cadEmail">E-mail</label>
-        <input type="email" id="cadEmail" placeholder="voce@email.com" required autocomplete="email">
-        <div class="field-error" id="cadEmailError"></div>
-      </div>
-
-      <div class="field">
-        <label for="cadTelefone">Telefone</label>
-        <input type="tel" id="cadTelefone" placeholder="(41) 90000-0000" required autocomplete="tel">
-        <div class="field-error" id="cadTelefoneError"></div>
-      </div>
-
-      <div class="field">
-        <label for="cadSenha">Senha</label>
-        <input type="password" id="cadSenha" placeholder="Crie uma senha" required autocomplete="new-password">
-        <div class="field-error" id="cadSenhaError"></div>
-      </div>
-
-      <button class="submit" type="submit">Criar conta</button>
-      <div class="status" id="cadStatus"></div>
-    </form>
-
-    <div class="switch-line" id="switchLine">
+    <div class="switch-line">
       Ainda não tem conta?
-      <button class="link-btn" id="goCadastro" type="button">Cadastre-se</button>
+      <a href="cadastro.html" class="link-btn" style="display:inline;text-decoration:underline;">Cadastre-se</a>
     </div>
   </div>
 
 </div>
 
 <footer class="site-footer">
-  <p>The Yasmin Barber · <a href="precos.html">Ver tabela de preços</a> · <a href="cortes.html">Galeria de cortes</a></p>
+  <p>The Yasmin Barber · <a href="cadastro.html">Criar conta</a></p>
 </footer>
+
+<script src="auth.js"></script>
 <script>
-  function pegarDados(){
-      dados = {
-          nome: document.getElementById("nome").value,
-          celular: document.getElementById("celular").value,
-          email: document.getElementById("email").value,
-          senha: document.getElementById("senha").value
-      }
-      return dados
+(function () {
+  if (Auth.isLoggedIn()) {
+    window.location.href = 'cortes.html';
+    return;
   }
 
-  const form_cadastro = document.getElementById("form_cadastro")
-  const btn_enviar = document.getElementById("btn_enviar")
+  function setError(id, msg) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = msg || '';
+  }
 
-  form_cadastro.addEventListener("submit", async (event)=>{
-      event.preventDefault()
-      btn_enviar.disabled = true
-      btn_enviar.value = "Enviando cadastro..."
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
 
-      const dados = pegarDados()
+  const formLogin = document.getElementById('formLogin');
+  formLogin.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    setError('loginEmailError', '');
+    setError('loginSenhaError', '');
 
-      try {
-          const resposta = await fetch("http://localhost:3000/cliente", {
-              method: "POST",
-              headers: { "Content-Type": "application/json" },
-              body: JSON.stringify(dados)
-          })
+    const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+    const senha = document.getElementById('loginSenha').value;
+    const status = document.getElementById('loginStatus');
+    const submitBtn = document.getElementById('btnLogin');
 
-          if (!resposta.ok) {
-              throw new Error("Erro na API")
-          }
+    status.textContent = '';
+    status.className = 'status';
 
-          mostrarToast("✅ Cadastro enviado com sucesso!", "bg-success");
-          form_cadastro.reset()
-      } catch(error) {
-          mostrarToast("❌ Falha ao enviar. " + error, "bg-danger");
-      } finally {
-          btn_enviar.value = "Enviar Cadastro"
-          btn_enviar.disabled = false
+    let ok = true;
+    if (!isValidEmail(email)) {
+      setError('loginEmailError', 'Digite um e-mail válido.');
+      ok = false;
+    }
+    if (!senha) {
+      setError('loginSenhaError', 'Digite sua senha.');
+      ok = false;
+    }
+    if (!ok) return;
+
+    submitBtn.disabled = true;
+    status.textContent = 'Autenticando...';
+
+    try {
+      const resposta = await fetch(API_BASE + '/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email: email, senha: senha })
+      });
+
+      const resultado = await resposta.json().catch(function () { return {}; });
+
+      if (!resposta.ok) {
+        throw new Error(resultado.error || resultado.message || resultado.erro || 'E-mail ou senha incorretos.');
       }
-  })
+
+      const cliente = resultado.cliente || resultado.user || resultado;
+      Auth.login(Object.assign({}, cliente, { token: resultado.token || cliente.token }));
+
+      const primeiroNome = (cliente.nome || '').split(' ')[0];
+      status.textContent = 'Login realizado! Bem-vindo' + (primeiroNome ? ', ' + primeiroNome : '') + '. Redirecionando...';
+      status.className = 'status ok';
+
+      setTimeout(function () {
+        window.location.href = 'cortes.html';
+      }, 700);
+    } catch (error) {
+      status.textContent = error.message || 'Falha ao conectar com a API.';
+      status.className = 'status err';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+})();
 </script>
-<script src="script.js"></script>
 </body>
 </html>
