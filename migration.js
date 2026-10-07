@@ -21,6 +21,7 @@ async function criar_tabela(){
 
     } catch (error) {
         console.log(error)
+         process.exit(1);
     }
 }
 criar_tabela()
