@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Criar conta · The Yasmin Barber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<script src="theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand-mini" href="index.html" aria-label="The Yasmin Barber — início">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
+      <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
+      <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
+    </svg>
+    <span class="name">The Yasmin Barber</span>
+  </a>
+
+  <nav>
+    <ul class="nav-links" role="list">
+      <li><a href="index.html">Entrar</a></li>
+      <li><a href="cadastro.html" class="active">Criar conta</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <button class="theme-btn" type="button" aria-label="Alternar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 0 0 11.3 11.3z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    </button>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<div class="stage">
+
+  <div class="brand">
+    <div class="mark">
+      <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+        <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
+        <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
+        <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
+      </svg>
+      <div class="mark-text">
+        <span class="kicker">BARBEARIA</span>
+        <span class="name">The Yasmin Barber</span>
+      </div>
+    </div>
+
+    <div class="hero">
+      <h1>Sua conta em <em>segundos</em>.</h1>
+      <p>Cadastre-se para agendar horários, ver seu histórico e garantir o melhor horário na cadeira.</p>
+    </div>
+
+    <div class="hours">
+      <span>Ter — Sex</span><span>09h às 20h</span>
+      <span>Sábado</span><span>08h às 18h</span>
+      <span>Domingo e Segunda</span><span>Fechado</span>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div class="panel-theme">
+      <button class="theme-btn" type="button" aria-label="Alternar tema">
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 0 0 11.3 11.3z"/>
+        </svg>
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+      </button>
+    </div>
+
+    <form id="formCadastro" autocomplete="on">
+      <h2 class="form-title">Criar sua conta</h2>
+      <p class="form-sub">Preencha seus dados para marcar seu próximo horário em segundos.</p>
+
+      <div class="field">
+        <label for="cadNome">Nome completo</label>
+        <input type="text" id="cadNome" name="nome" placeholder="Seu nome" required autocomplete="name">
+        <div class="field-error" id="cadNomeError"></div>
+      </div>
+
+      <div class="field">
+        <label for="cadEmail">E-mail</label>
+        <input type="email" id="cadEmail" name="email" placeholder="voce@email.com" required autocomplete="email">
+        <div class="field-error" id="cadEmailError"></div>
+      </div>
+
+      <div class="field">
+        <label for="cadTelefone">Telefone</label>
+        <input type="tel" id="cadTelefone" name="celular" placeholder="(41) 90000-0000" required autocomplete="tel">
+        <div class="field-error" id="cadTelefoneError"></div>
+      </div>
+
+      <div class="field">
+        <label for="cadSenha">Senha</label>
+        <input type="password" id="cadSenha" name="senha" placeholder="Mínimo 6 caracteres" required autocomplete="new-password" minlength="6">
+        <div class="field-error" id="cadSenhaError"></div>
+      </div>
+
+      <button class="submit" type="submit" id="btnCadastro">Criar conta</button>
+      <div class="status" id="cadStatus"></div>
+    </form>
+
+    <div class="switch-line">
+      Já tem conta?
+      <a href="index.html" class="link-btn" style="display:inline;text-decoration:underline;">Entrar</a>
+    </div>
+  </div>
+
+</div>
+
+<footer class="site-footer">
+  <p>The Yasmin Barber · <a href="index.html">Já tenho conta — Entrar</a></p>
+</footer>
+
+<script src="auth.js"></script>
+<script>
+(function () {
+  if (Auth.isLoggedIn()) {
+    window.location.href = 'cortes.html';
+    return;
+  }
+
+  function setError(id, msg) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = msg || '';
+  }
+
+  function isValidEmail(v) {
+    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);
+  }
+
+  function isValidPhone(v) {
+    return v.replace(/\D/g, '').length >= 10;
+  }
+
+  const formCadastro = document.getElementById('formCadastro');
+  formCadastro.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    ['cadNomeError', 'cadEmailError', 'cadTelefoneError', 'cadSenhaError'].forEach(function (id) {
+      setError(id, '');
+    });
+
+    const nome = document.getElementById('cadNome').value.trim();
+    const email = document.getElementById('cadEmail').value.trim().toLowerCase();
+    const celular = document.getElementById('cadTelefone').value.trim();
+    const senha = document.getElementById('cadSenha').value;
+    const status = document.getElementById('cadStatus');
+    const submitBtn = document.getElementById('btnCadastro');
+
+    status.textContent = '';
+    status.className = 'status';
+
+    let ok = true;
+    if (nome.length < 2) {
+      setError('cadNomeError', 'Digite seu nome completo.');
+      ok = false;
+    }
+    if (!isValidEmail(email)) {
+      setError('cadEmailError', 'Digite um e-mail válido.');
+      ok = false;
+    }
+    if (!isValidPhone(celular)) {
+      setError('cadTelefoneError', 'Digite um telefone válido.');
+      ok = false;
+    }
+    if (senha.length < 6) {
+      setError('cadSenhaError', 'A senha precisa ter ao menos 6 caracteres.');
+      ok = false;
+    }
+    if (!ok) return;
+
+    submitBtn.disabled = true;
+    status.textContent = 'Enviando cadastro...';
+
+    try {
+      const resposta = await fetch(API_BASE + '/cliente', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          nome: nome,
+          email: email,
+          celular: celular,
+          senha: senha
+        })
+      });
+
+      const resultado = await resposta.json().catch(function () { return {}; });
+
+      if (!resposta.ok) {
+        throw new Error(resultado.error || resultado.message || resultado.erro || 'Erro ao criar conta no banco de dados.');
+      }
+
+      status.textContent = 'Conta criada com sucesso! Redirecionando para o login...';
+      status.className = 'status ok';
+      formCadastro.reset();
+
+      setTimeout(function () {
+        window.location.href = 'index.html';
+      }, 1200);
+    } catch (error) {
+      status.textContent = error.message || 'Falha ao conectar com a API.';
+      status.className = 'status err';
+    } finally {
+      submitBtn.disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>
