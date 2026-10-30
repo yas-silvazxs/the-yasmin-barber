@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Produtos · The Yasmin Barber</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;1,9..144,500&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="stylesheet" href="produtos.css">
+<script src="theme.js"></script>
+</head>
+<body>
+
+<header class="site-header">
+  <a class="brand-mini" href="index.html" aria-label="The Yasmin Barber — início">
+    <svg viewBox="0 0 48 48" fill="none" aria-hidden="true">
+      <circle cx="24" cy="24" r="22" stroke="#C79A3E" stroke-width="1.4"/>
+      <path d="M14 16 L24 28 L34 16" stroke="#C79A3E" stroke-width="1.4" fill="none"/>
+      <path d="M14 32 L24 20 L34 32" stroke="#e7c579" stroke-width="1.4" fill="none"/>
+    </svg>
+    <span class="name">The Yasmin Barber</span>
+  </a>
+
+  <nav>
+    <ul class="nav-links" role="list" id="mainNav">
+      <li><a href="cortes.html">Cortes</a></li>
+      <li><a href="produtos.html" class="active">Produtos</a></li>
+      <li><a href="precos.html">Preços</a></li>
+      <li><a href="#" id="btnSair">Sair</a></li>
+    </ul>
+  </nav>
+
+  <div class="header-actions">
+    <button class="theme-btn" type="button" aria-label="Alternar tema">
+      <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 14.3A9 9 0 1 1 9.7 3a7 7 0 0 0 11.3 11.3z"/>
+      </svg>
+      <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="12" cy="12" r="4"/>
+        <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+      </svg>
+    </button>
+    <button class="menu-toggle" type="button" aria-label="Abrir menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true">
+        <path d="M4 7h16M4 12h16M4 17h16"/>
+      </svg>
+    </button>
+  </div>
+</header>
+
+<main class="page">
+  <div class="page-hero">
+    <span class="eyebrow">Loja da barbearia</span>
+    <h1>Produtos para cuidar do seu estilo</h1>
+    <p>Os mesmos produtos que usamos na cadeira. Escolha o seu e retire na barbearia no seu próximo horário.</p>
+  </div>
+
+  <form class="toolbar" id="formFiltros" autocomplete="off">
+    <div class="tool tool-busca">
+      <label for="fBusca">Buscar por nome</label>
+      <input type="search" id="fBusca" placeholder="Ex.: pomada, óleo, navalha...">
+    </div>
+    <div class="tool">
+      <label for="fMin">Preço mínimo</label>
+      <input type="number" id="fMin" min="0" step="0.01" inputmode="decimal" placeholder="R$ 0">
+    </div>
+    <div class="tool">
+      <label for="fMax">Preço máximo</label>
+      <input type="number" id="fMax" min="0" step="0.01" inputmode="decimal" placeholder="R$ 200">
+    </div>
+    <div class="tool">
+      <label for="fOrdem">Ordenar por</label>
+      <select id="fOrdem">
+        <option value="">Padrão</option>
+        <option value="preco_asc">Menor preço</option>
+        <option value="preco_desc">Maior preço</option>
+      </select>
+    </div>
+    <button class="clear-btn" type="button" id="btnLimpar">Limpar filtros</button>
+  </form>
+
+  <div class="filters" id="filtros" role="group" aria-label="Filtrar por categoria"></div>
+  <div class="results-info" id="info" aria-live="polite"></div>
+
+  <div class="product-grid" id="listaProdutos" aria-live="polite">
+    <div class="products-state">Carregando produtos...</div>
+  </div>
+
+  <nav class="pagination" id="paginacao" aria-label="Paginação de produtos"></nav>
+
+  <p style="margin-top:40px;font-size:13.5px;color:var(--muted);max-width:520px;line-height:1.55;">
+    Valores sujeitos a alteração. Pagamento em dinheiro, PIX ou cartão. Retirada na barbearia.
+  </p>
+</main>
+
+<footer class="site-footer">
+  <p>The Yasmin Barber · <a href="cortes.html">Ver galeria de cortes</a></p>
+</footer>
+
+<script src="auth.js"></script>
+<script>
+(function () {
+  if (!Auth.requireAuth()) return;
+  var user = Auth.getUser();
+
+  var btn = document.getElementById('btnSair');
+  if (btn) {
+    btn.addEventListener('click', function (e) {
+      e.preventDefault();
+      Auth.logout();
+      window.location.href = 'index.html';
+    });
+  }
+  var foot = document.querySelector('.site-footer p');
+  if (foot && user && user.nome) {
+    var strong = document.createElement('strong');
+    strong.textContent = user.nome.split(' ')[0];
+    foot.append(' · Olá, ', strong);
+  }
+
+  var lista = document.getElementById('listaProdutos');
+  var filtros = document.getElementById('filtros');
+  var info = document.getElementById('info');
+  var paginacao = document.getElementById('paginacao');
+
+  var fBusca = document.getElementById('fBusca');
+  var fMin = document.getElementById('fMin');
+  var fMax = document.getElementById('fMax');
+  var fOrdem = document.getElementById('fOrdem');
+
+  var estadoFiltros = { categoria: '', pagina: 1 };
+  var requisicao = 0;
+  var timer = null;
+
+  function brl(v) {
+    return Number(v).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
+  }
+
+  function estado(msg, erro) {
+    lista.innerHTML = '';
+    var d = document.createElement('div');
+    d.className = 'products-state' + (erro ? ' err' : '');
+    d.textContent = msg;
+    lista.appendChild(d);
+  }
+
+  function criarCard(p) {
+    var card = document.createElement('article');
+    card.className = 'product-card';
+
+    var media = document.createElement('div');
+    media.className = 'media';
+    media.setAttribute('aria-hidden', 'true');
+    media.textContent = p.icone;
+    var badge = document.createElement('span');
+    badge.className = 'badge';
+    badge.textContent = p.categoria;
+    media.appendChild(badge);
+
+    var body = document.createElement('div');
+    body.className = 'body';
+    var h3 = document.createElement('h3');
+    h3.textContent = p.nome;
+    var desc = document.createElement('p');
+    desc.className = 'desc';
+    desc.textContent = p.descricao;
+
+    var foot = document.createElement('div');
+    foot.className = 'foot';
+    var price = document.createElement('div');
+    price.className = 'price';
+    price.textContent = brl(p.preco);
+    var stock = document.createElement('div');
+    stock.className = 'stock' + (p.estoque <= 5 ? ' low' : '');
+    stock.textContent = p.estoque <= 0 ? 'Esgotado'
+      : p.estoque <= 5 ? 'Últimas ' + p.estoque + ' unid.'
+      : p.estoque + ' em estoque';
+    foot.append(price, stock);
+
+    body.append(h3, desc, foot);
+    card.append(media, body);
+    return card;
+  }
+
+  // ----- categorias (vêm da API) -----
+  function montarCategorias(cats) {
+    var todas = [''].concat(cats);
+    filtros.innerHTML = '';
+    todas.forEach(function (c) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'filter-btn' + (c === estadoFiltros.categoria ? ' active' : '');
+      b.textContent = c || 'Todos';
+      b.addEventListener('click', function () {
+        estadoFiltros.categoria = c;
+        estadoFiltros.pagina = 1;
+        filtros.querySelectorAll('.filter-btn').forEach(function (x) { x.classList.toggle('active', x === b); });
+        carregar();
+      });
+      filtros.appendChild(b);
+    });
+  }
+
+  // ----- paginação -----
+  function montarPaginacao(pagina, totalPaginas) {
+    paginacao.innerHTML = '';
+    if (totalPaginas <= 1) return;
+
+    function botao(texto, alvo, opts) {
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'page-btn' + (opts && opts.ativo ? ' active' : '');
+      b.textContent = texto;
+      if (opts && opts.aria) b.setAttribute('aria-label', opts.aria);
+      if (opts && opts.ativo) b.setAttribute('aria-current', 'page');
+      if (opts && opts.desabilitado) b.disabled = true;
+      b.addEventListener('click', function () {
+        estadoFiltros.pagina = alvo;
+        carregar();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+      paginacao.appendChild(b);
+    }
+
+    botao('‹ Anterior', pagina - 1, { desabilitado: pagina <= 1, aria: 'Página anterior' });
+    for (var i = 1; i <= totalPaginas; i++) {
+      botao(String(i), i, { ativo: i === pagina, aria: 'Página ' + i });
+    }
+    botao('Próxima ›', pagina + 1, { desabilitado: pagina >= totalPaginas, aria: 'Próxima página' });
+  }
+
+  // ----- busca na API -----
+  function montarQuery() {
+    var q = new URLSearchParams();
+    var busca = fBusca.value.trim();
+    if (busca) q.set('busca', busca);
+    if (estadoFiltros.categoria) q.set('categoria', estadoFiltros.categoria);
+    if (fMin.value !== '') q.set('preco_min', fMin.value);
+    if (fMax.value !== '') q.set('preco_max', fMax.value);
+    if (fOrdem.value) q.set('ordem', fOrdem.value);
+    q.set('pagina', estadoFiltros.pagina);
+    return q.toString();
+  }
+
+  function carregar() {
+    var minhaReq = ++requisicao;
+    fetch(API_BASE + '/produtos?' + montarQuery())
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (corpo) {
+          if (!r.ok) { var e = new Error(corpo.erro || ('Erro ' + r.status)); e.api = true; throw e; }
+          return corpo;
+        });
+      })
+      .then(function (dados) {
+        if (minhaReq !== requisicao) return; // resposta antiga, ignora
+        estadoFiltros.pagina = dados.pagina;
+        info.textContent = dados.total === 1 ? '1 produto encontrado' : dados.total + ' produtos encontrados';
+        if (!dados.produtos.length) {
+          estado('Nenhum produto encontrado com esses filtros.');
+        } else {
+          lista.innerHTML = '';
+          dados.produtos.forEach(function (p) { lista.appendChild(criarCard(p)); });
+        }
+        montarPaginacao(dados.pagina, dados.total_paginas);
+      })
+      .catch(function (err) {
+        if (minhaReq !== requisicao) return;
+        info.textContent = '';
+        paginacao.innerHTML = '';
+        estado(err.api ? err.message : 'Não foi possível carregar os produtos. Verifique se a API está rodando.', true);
+      });
+  }
+
+  function filtrarDeNovo() {
+    estadoFiltros.pagina = 1;
+    carregar();
+  }
+
+  // pequeno atraso enquanto digita, para não consultar a cada tecla
+  fBusca.addEventListener('input', function () {
+    clearTimeout(timer);
+    timer = setTimeout(filtrarDeNovo, 300);
+  });
+  [fMin, fMax].forEach(function (el) {
+    el.addEventListener('input', function () {
+      clearTimeout(timer);
+      timer = setTimeout(filtrarDeNovo, 400);
+    });
+  });
+  fOrdem.addEventListener('change', filtrarDeNovo);
+
+  document.getElementById('formFiltros').addEventListener('submit', function (e) { e.preventDefault(); });
+  document.getElementById('btnLimpar').addEventListener('click', function () {
+    fBusca.value = ''; fMin.value = ''; fMax.value = ''; fOrdem.value = '';
+    estadoFiltros.categoria = '';
+    filtros.querySelectorAll('.filter-btn').forEach(function (x, i) { x.classList.toggle('active', i === 0); });
+    filtrarDeNovo();
+  });
+
+  // início: categorias + primeira página
+  fetch(API_BASE + '/produtos/categorias')
+    .then(function (r) { return r.json(); })
+    .then(montarCategorias)
+    .catch(function () {});
+  carregar();
+})();
+</script>
+
+</body>
+</html>
